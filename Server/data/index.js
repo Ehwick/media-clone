@@ -1,5 +1,4 @@
-// get from repo in youtube description
-
+// fake data for users and posts to insert into mongoose models
 import mongoose from "mongoose";
 
 const userIds = [
@@ -13,6 +12,7 @@ const userIds = [
   new mongoose.Types.ObjectId(),
 ];
 
+// input data for fake users
 export const users = [
   {
     _id: userIds[0],
@@ -144,6 +144,7 @@ export const users = [
   },
 ];
 
+// input data for fake posts
 export const posts = [
   {
     _id: new mongoose.Types.ObjectId(),
