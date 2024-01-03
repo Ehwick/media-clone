@@ -1,8 +1,9 @@
+// import React dependencies, styling, and app 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-
+// import state management / local storage functionalities
 import authReducer from "./state";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
@@ -18,9 +19,8 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { PersistGate } from "redux-persist/integration/react";
-// persist is helpful for local storage, only way to get rid of
-// is by clearing cache 
 
+// set up local storage
 const persistConfig = { key: "root", storage, version: 1 };
 const persistedReducer = persistReducer(persistConfig, authReducer);
 const store = configureStore({
@@ -33,6 +33,7 @@ const store = configureStore({
     }), 
 });
 
+// invoke app with store 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

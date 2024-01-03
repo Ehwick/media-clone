@@ -32,9 +32,8 @@ export const colorTokens = {
 // mui theme settings
 export const themeSettings = (mode) => {
     return {
-        // whatever the mode is, return paletter / typography
         palette: {
-            // value under "mode" key is the light or dark
+            // toggle palette based on mode
             mode: mode,
             ...(mode === "dark") ? {
                 // palette values for dark mode
@@ -74,6 +73,7 @@ export const themeSettings = (mode) => {
                 },
             },
         },
+        // typography settings 
         typography: {
             fontFamily: ["Rubik", "sans-serif"].join(","),
             fontSize: 12,

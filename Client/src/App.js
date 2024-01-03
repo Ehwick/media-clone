@@ -1,28 +1,25 @@
+// Conditional rendering by routing
 import { BrowserRouter, Navigate, Routes, Route } from 'react-router-dom';
-// can do scenes/homepage bc of json config file
 import HomePage from 'scenes/homePage';
 import LoginPage from 'scenes/loginPage';
 import ProfilePage from 'scenes/profilePage';
+// state management and theme functions
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
-// css baseline standardizes across browsers
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { themeSettings } from './theme';
 
 function App() {
-  // grab state from store using useSelector
+  // set up theme given a mode
   const mode = useSelector((state) => state.mode);
-  // set up our theme by passing specific mode
-  // createTheme takes two arguments to create theme
-  // passed to themeprovider
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
-  // if token exists, we are now authorized
+  // authorized if token exists
   const isAuth = Boolean(useSelector((state) => state.token));
 
   return (
   <div className="app">
-    {/* Setting up browser routes, :userId is a param */}
+    {/* Set up routes, provide theme for site */}
     <BrowserRouter>
       <ThemeProvider theme={theme}>
         <CssBaseline />

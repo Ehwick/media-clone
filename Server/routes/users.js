@@ -1,5 +1,5 @@
 import express from "express";
-// import controllers
+// import user based controller functions
 import {
     getUser,
     getUserFriends,
@@ -9,18 +9,14 @@ import { verifyToken } from "../middleware/auth.js";
 
 const router = express.Router();
 
-// create read routes where we get information
-
 /* READ */
-
-// "some id", call database with that ~particular~ id
-// query string will grab particular id
+// get certain user / get certain user's friends
 router.get("/:id", verifyToken, getUser);
 router.get("/:id/friends", verifyToken, getUserFriends);
 
 /* UPDATE */
 
-// need particular user ID and particular friend ID
+// add / remove friend 
 router.patch("/:id/:friendId", verifyToken, addRemoveFriend);
 
 export default router;

@@ -1,9 +1,9 @@
-// will help use set up model 
+// define User model by creating schema 
 import mongoose from "mongoose";
 
 const UserSchema = new mongoose.Schema(
     {
-        // create a first name w/ these properties
+        // for users, define all of the following:
        firstName: {
         type: String,
         required: true,
@@ -22,8 +22,7 @@ const UserSchema = new mongoose.Schema(
         max: 50, 
         // can't have duplicate emails
         unique: true,
-       }, 
-       // usually more configs for password
+       },
        password: {
         type: String,
         required: true,
@@ -43,12 +42,9 @@ const UserSchema = new mongoose.Schema(
        viewedProfile: Number,
        impressions: Number,
     },
-    // will give us automatic dates for when it's created/updated
     { timestamps: true }
 );
 
-// when creating mongoose model, create schema first
-// and then pass it into mongoose.model 
 const User = mongoose.model("User", UserSchema)
 
 export default User;

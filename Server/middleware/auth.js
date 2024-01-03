@@ -1,31 +1,23 @@
-// verify token is a middleware function because it must execute next function only if verified
-
+// middleware user authorization using JSON webtoken
 import jwt from "jsonwebtoken";
 
 
 export const verifyToken = async (req, res, next) => {
     try {
-        // from request in the frontend, token will be set
-        // on the front end on authorization header
-        // we grab it with this token
+        // grab token from frontend request
         let token = req.header("Authorization");
 
-        // i.e. if there is not a jwt token 
+        // access denied if no token is given at all
         if (!token) {
             return res.status(403).send("Access Denied");
         }
 
-        // want token to start with Bearer which is set on the front end
-        // take everything from the right side of bearer
+        // remove bearer
         if (token.startsWith("Bearer ")) {
             token = token.slice(7, token.length).trimLeft();
         } 
 
-        // verify jwt passing in token and and secret string
-        // make req.user verified, go onto next middleware function 
-        // next can almost be used like a decorator function that is 
-        // passed before another function, checks a condition, and if 
-        // true, allows to proceed, as you'd like for login authorization 
+        // verify user who made request, move on from middleware w/ next
         const verified = jwt.verify(token, process.env.JWT_SECRET);
         req.user = verified;
         next();

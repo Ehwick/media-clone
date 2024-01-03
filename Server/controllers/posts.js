@@ -1,12 +1,11 @@
+// controller functions regarding posts
 import Post from "../models/Post.js";
 import User from "../models/User.js";
 
-/* CREATE */
-
-// will have imaged passed in, per main index.js file
+// Create post 
 export const createPost = async (req, res) => {
     try {
-        // extract info from front end pic having used upload function 
+        // destructure post information / create post from model 
         const { userId, description, picturePath } = req.body;
         const user = await User.findById(userId);
         const newPost = new Post({
@@ -17,7 +16,7 @@ export const createPost = async (req, res) => {
             description,
             userPicturePath: user.picturePath,
             picturePath,
-            // empty likes at first
+            // empty likes and comments at first 
             likes: {},
             comments: []
         })
@@ -31,10 +30,10 @@ export const createPost = async (req, res) => {
     }
 };
 
-/* READ */
-
+// get feed posts 
 export const getFeedPosts = async (req, res) => {
     try {
+        // grab all posts and return to front end in response 
         const post = await Post.find();
         res.status(200).json(post);
     } catch (err) {
@@ -42,10 +41,10 @@ export const getFeedPosts = async (req, res) => {
     }
 }
 
+// get posts from a user 
 export const getUserPosts = async (req, res) => {
     try {
         const { userId } = req.params;
-        // will get posts of the user 
         const post = await Post.find({ userId });
         res.status(200).json(post);
     } catch (err) {
@@ -53,15 +52,14 @@ export const getUserPosts = async (req, res) => {
     }
 }
 
-/* UPDATE */
-
+// like and unlike posts 
 export const likePost = async (req, res) => {
     try {
         const { id } = req.params;
         const { userId } = req.body;
         const post = await Post.findById(id);
         const isLiked = post.likes.get(userId);
-
+        // toggle like based on isLiked
         if (isLiked) {
             post.likes.delete(userId);
         } else {
@@ -78,5 +76,3 @@ export const likePost = async (req, res) => {
         res.status(404).json({ message: err.message })
     }
 }
-
-// backend is now complete!

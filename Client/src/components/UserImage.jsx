@@ -1,5 +1,6 @@
 import { Box } from "@mui/material";
 
+// circular user image styling 
 const UserImage = ({ image, size = "60px" }) => {
   return (
     <Box width={size} height={size}>

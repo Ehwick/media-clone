@@ -1,12 +1,9 @@
 import express from "express";
-// will  need to write a login controller
+// import login controller function 
 import { login } from "../controllers/auth.js";
 
-// set up a router, allows express to identify that 
-// all these routes will be configured and keep
-// us in seperate files
+// router for auth/login route w/ login function 
 const router = express.Router();
-
 router.post("/login", login);
 
 export default router;

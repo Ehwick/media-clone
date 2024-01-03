@@ -1,9 +1,9 @@
-// comments won't have their own functionality, just 
-// to make things easier
+// define Post model by creating schema 
 import mongoose from "mongoose";
 
 const postSchema = mongoose.Schema(
     {
+        // for posts, define all of the following:
         userId: {
             type: String,
             required: true,
@@ -20,8 +20,6 @@ const postSchema = mongoose.Schema(
         description: String,
         picturePath: String,
         userPicturePath: String,
-        // check if userId exists in map, if so, boolean is true
-        // reason not an array is because map is more efficient bc mongo 
         likes: {
             type: Map,
             of: Boolean, 

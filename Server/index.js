@@ -60,8 +60,7 @@ app.use("/users", userRoutes);
 app.use("/posts", postRoutes);
 
 /* MONGOOSE SETUP */
-// mongoose module to connect to URL in env file (not posted 
-// on GitHub)
+// mongoose module to connect to URL in env file (not posted on GitHub)
 const PORT = process.env.PORT || 6001;
 mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,  
