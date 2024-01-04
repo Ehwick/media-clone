@@ -1,3 +1,4 @@
+// post widget to be mapped onto myposts widget 
 import {
     ChatBubbleOutlineOutlined,
     FavoriteBorderOutlined,
@@ -12,6 +13,7 @@ import {
   import { useDispatch, useSelector } from "react-redux";
   import { setPost } from "state";
   
+  // post widget needs several values based on user/state
   const PostWidget = ({
     postId,
     postUserId,
@@ -23,6 +25,7 @@ import {
     likes,
     comments,
   }) => {
+    // comments originally false, can be set based on state
     const [isComments, setIsComments] = useState(false);
     const dispatch = useDispatch();
     const token = useSelector((state) => state.token);
@@ -34,6 +37,7 @@ import {
     const main = palette.neutral.main;
     const primary = palette.primary.main;
   
+    // API call to like and unlike posts 
     const patchLike = async () => {
       const response = await fetch(`http://localhost:3001/posts/${postId}/like`, {
         method: "PATCH",

@@ -1,3 +1,4 @@
+// form component for login/register using Yup 
 import { useState } from "react";
 import {
   Box,
@@ -16,6 +17,7 @@ import { setLogin } from "state";
 import Dropzone from "react-dropzone";
 import FlexBetween from "components/FlexBetween";
 
+// yup schemas and initial values for register and login forms 
 const registerSchema = yup.object().shape({
   firstName: yup.string().required("required"),
   lastName: yup.string().required("required"),
@@ -25,12 +27,10 @@ const registerSchema = yup.object().shape({
   occupation: yup.string().required("required"),
   picture: yup.string().required("required"),
 });
-
 const loginSchema = yup.object().shape({
   email: yup.string().email("invalid email").required("required"),
   password: yup.string().required("required"),
 });
-
 const initialValuesRegister = {
   firstName: "",
   lastName: "",
@@ -40,13 +40,13 @@ const initialValuesRegister = {
   occupation: "",
   picture: "",
 };
-
 const initialValuesLogin = {
   email: "",
   password: "",
 };
 
 const Form = () => {
+  // React hooks to toggle form/page type 
   const [pageType, setPageType] = useState("login");
   const { palette } = useTheme();
   const dispatch = useDispatch();
@@ -55,6 +55,7 @@ const Form = () => {
   const isLogin = pageType === "login";
   const isRegister = pageType === "register";
 
+  // register API call 
   const register = async (values, onSubmitProps) => {
     // this allows us to send form info with image
     const formData = new FormData();
@@ -78,6 +79,7 @@ const Form = () => {
     }
   };
 
+  // login API call 
   const login = async (values, onSubmitProps) => {
     const loggedInResponse = await fetch("http://localhost:3001/auth/login", {
       method: "POST",
@@ -96,12 +98,14 @@ const Form = () => {
       navigate("/home");
     }
   };
-
+  
+  // call function based on pagetype on submit 
   const handleFormSubmit = async (values, onSubmitProps) => {
     if (isLogin) await login(values, onSubmitProps);
     if (isRegister) await register(values, onSubmitProps);
   };
 
+  // conditionally render register or login forms with Formik 
   return (
     <Formik
       onSubmit={handleFormSubmit}

@@ -1,8 +1,10 @@
+// advert widget to go on right side of page 
 import { Typography, useTheme } from "@mui/material";
 import FlexBetween from "components/FlexBetween";
 import WidgetWrapper from "components/WidgetWrapper";
 
 const AdvertWidget = () => {
+  // theme settings based on mode 
   const { palette } = useTheme();
   const dark = palette.neutral.dark;
   const main = palette.neutral.main;
@@ -10,6 +12,7 @@ const AdvertWidget = () => {
 
   return (
     <WidgetWrapper>
+      {/* static advertisement displayed here, more dynamic storage for real app */}
       <FlexBetween>
         <Typography color={dark} variant="h5" fontWeight="500">
           Sponsored

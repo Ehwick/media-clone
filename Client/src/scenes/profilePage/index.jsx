@@ -1,3 +1,4 @@
+// profile page 
 import { Box, useMediaQuery } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
@@ -9,11 +10,13 @@ import PostsWidget from "scenes/widgets/PostsWidget";
 import UserWidget from "scenes/widgets/UserWidget";
 
 const ProfilePage = () => {
+  // use hook to determine which page is being shown 
   const [user, setUser] = useState(null);
   const { userId } = useParams();
   const token = useSelector((state) => state.token);
   const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
 
+  // get user API call to change user State
   const getUser = async () => {
     const response = await fetch(`http://localhost:3001/users/${userId}`, {
       method: "GET",
@@ -32,6 +35,7 @@ const ProfilePage = () => {
   return (
     <Box>
       <Navbar />
+      {/* return user, friendlist, post, and user-posts widgets with responsiveness */}
       <Box
         width="100%"
         padding="2rem 6%"

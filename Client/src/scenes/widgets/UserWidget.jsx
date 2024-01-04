@@ -1,3 +1,4 @@
+// user widget for homepage and profile page 
 import {
     ManageAccountsOutlined,
     EditOutlined,
@@ -13,7 +14,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const UserWidget = ({ userId, picturePath }) => {
-    // how we grab the user from the store 
+    // react hook to grab user from the store 
     const [user, setUser] = useState(null);
     const { palette } = useTheme();
     const navigate = useNavigate();
@@ -23,8 +24,6 @@ const UserWidget = ({ userId, picturePath }) => {
     const main = palette.neutral.main;
 
     // call API to get specific user for widget using userId
-    // token will be passed through verifyToken middleware, and 
-    // finally return user, then use hook to set user
     const getUser = async () => {
         const response = await fetch(`http://localhost:3001/users/${userId}`, {
             method: "GET",
@@ -34,11 +33,6 @@ const UserWidget = ({ userId, picturePath }) => {
         setUser(data);
     };
 
-    // useEffect is called with two arguments: a function 
-    // and an empty dependency array ([]). This empty dependency
-    // array means that the effect will run only once when 
-    // the component is mounted, similar to the 
-    // componentDidMount lifecycle method in class components.
     useEffect(() => {
         getUser();
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
@@ -115,7 +109,7 @@ const UserWidget = ({ userId, picturePath }) => {
             </Box>
             <Divider />
 
-            {/* THIRD ROW */}
+            {/* FOURTH ROW */}
             <Box p="1rem 0">
                 <Typography fontSize="1rem" color={main} fontWeight="500" mb="1rem">
                     Social Profiles

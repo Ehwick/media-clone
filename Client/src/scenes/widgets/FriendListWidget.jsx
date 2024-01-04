@@ -1,3 +1,4 @@
+// friends list widget for homepage and profile page 
 import { Box, Typography, useTheme } from "@mui/material";
 import Friend from "components/Friend";
 import WidgetWrapper from "components/WidgetWrapper";
@@ -5,12 +6,14 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setFriends } from "state";
 
+// use userId to determine ~whose~ friendslist to return 
 const FriendListWidget = ({ userId }) => {
   const dispatch = useDispatch();
   const { palette } = useTheme();
   const token = useSelector((state) => state.token);
   const friends = useSelector((state) => state.user.friends);
 
+  // dispatch list of friends to setFriends reducer function
   const getFriends = async () => {
     const response = await fetch(
       `http://localhost:3001/users/${userId}/friends`,
@@ -29,6 +32,7 @@ const FriendListWidget = ({ userId }) => {
 
   return (
     <WidgetWrapper>
+      {/* Return list of mapped friend components */}
       <Typography
         color={palette.neutral.dark}
         variant="h5"

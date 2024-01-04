@@ -1,3 +1,4 @@
+// navbar for homepage
 import { useState } from 'react';
 import { 
     Box,
@@ -11,7 +12,6 @@ import {
     useMediaQuery,
     Icon
 } from "@mui/material";
-// different icons from web 
 import { 
     Search, 
     Message, 
@@ -30,17 +30,12 @@ import FlexBetween from 'components/FlexBetween';
 const Navbar = () => {
     // hook for toggling menu 
     const [isMobileMenuToggled, setIsMobileMenuToggled] = useState(false);
-    // needed to dispatch actions inside of redux store, to modify state 
-    // makes it easier to send actions to redux store directly from 
-    // functional components 
     const dispatch = useDispatch();
-    // used to navigate to different routes 
     const navigate = useNavigate();
-    // useSelector allows to get info from redux store 
     const user = useSelector((state) => state.user);
-    // often used with useTheme hook to apply responsive ui 
     const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
 
+    // theme coloring based on mode 
     const theme = useTheme();
     const neutralLight = theme.palette.neutral.light;
     const dark = theme.palette.neutral.dark;
@@ -49,9 +44,7 @@ const Navbar = () => {
     const alt = theme.palette.background.alt;
     const fullName = user ? `${user.firstName} ${user.lastName}` : "";
 
-    // there is a flexbetween for the whole navbar which contains left and right
-        // the left is flex between: typography and conditionally search components
-        // if non-mobile screen, then also contains right side components
+    // JSX for nav with responsive design 
     return (    
     <FlexBetween padding="1.2rem 6%" backgroundColor={alt}>
         <FlexBetween gap="1.75rem">
@@ -70,8 +63,7 @@ const Navbar = () => {
             >
                 VargasBook
             </Typography>
-            {/* isNonMobileScreens is a boolean
-            the && is used to conditionally render */}
+            {/* if desktop nav, include search bar */}
             {isNonMobileScreens && (
                 <FlexBetween 
                     backgroundColor={neutralLight} 
@@ -86,7 +78,7 @@ const Navbar = () => {
                 </FlexBetween>
             )}
         </FlexBetween>
-        {/* DESKTOP NAV AKA NON-MOBILE SCREENS*/}
+        {/* if desktop nav, include right hand side of nav */}
         {isNonMobileScreens ? (
             <FlexBetween gap="2rem">
                 <IconButton onClick={() => dispatch(setMode())}>
@@ -133,7 +125,7 @@ const Navbar = () => {
             </IconButton>
         )}
 
-        {/* MOBILE NAV, toggled menu will create a box with icons */}
+        {/* toggled menu logic on non-desktop */}
         {!isNonMobileScreens && isMobileMenuToggled && (
             <Box
                 position="fixed"

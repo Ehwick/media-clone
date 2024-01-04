@@ -1,3 +1,4 @@
+// post widget for homepage and profile pages
 import {
     EditOutlined,
     DeleteOutlined,
@@ -27,6 +28,7 @@ import {
   
   const MyPostWidget = ({ picturePath }) => {
     const dispatch = useDispatch();
+    // react hooks for if an image is there, for which image, and for post language 
     const [isImage, setIsImage] = useState(false);
     const [image, setImage] = useState(null);
     const [post, setPost] = useState("");
@@ -37,6 +39,7 @@ import {
     const mediumMain = palette.neutral.mediumMain;
     const medium = palette.neutral.medium;
   
+    // API for making post, then resetting post to original state 
     const handlePost = async () => {
       const formData = new FormData();
       formData.append("userId", _id);
