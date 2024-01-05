@@ -17,4 +17,15 @@ ii. Register form with Formik, and multer
 iii. Bottom part of register form 
 ![bottom part of register form](/public/assets/register2.png)
 
+## HOME PAGE:
+
+i. Home page with navbar at top, user widget to the left, post widget in the center middle with multer upload, a posts widget below it, and an advertisement widget and friends list widget to the right. 
+![top of home page](/public/assets/homepage1.png)
+
+ii. Home page demonstrating comments and like functionalities, and mapping of friends list widget 
+![rest of home page](/public/assets/homepage2.png)
+
+iii. Light mode of the homepage 
+![homepage on light mode](/public/assets/homepageL.png)
+
 
