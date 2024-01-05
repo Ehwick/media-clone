@@ -9,7 +9,7 @@ The frontend is organized by scenes: specifically, the three main ones are our l
 LOGIN / REGISTER PAGE:
 
 i. 
-/Users/erikvargas/Desktop/mern-network/login.png
+/public/assets/login.png
 
 ii. 
 /Users/erikvargas/Desktop/mern-network/register1.png
