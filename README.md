@@ -28,4 +28,24 @@ ii. Home page demonstrating comments and like functionalities, and mapping of fr
 iii. Light mode of the homepage 
 ![homepage on light mode](/public/assets/homepageL.png)
 
+### homepage with responsive design
 
+i. When working with a smaller screen, the navbar is condensed to the logo and hamburger menu, and the user widget is at the top and takes up the whole screen
+![responsive design nav with user widget](/public/assets/rhomepage1.png)
+
+ii. Hamburger menu is toggled
+![responsive design showing menu list](/public/assets/rhomepage2.png)
+
+iii. Post and posts widgets are below the user widget for responsive design
+![homepage on light mode](/public/assets/rhomepage3.png)
+
+## PROFILE PAGE:
+
+i. Profile page renders the user widget, post widget, and posts widget of a given user
+![Profile page of a different user](/public/assets/profilepage.png)
+
+ii. When working with a small screen, user widget is up top 
+![Responsive profile page](/public/assets/rprofilepage1.png)
+
+iii. Friends list and post/posts widget would be below the user widget
+![Bottom of responsive profile page](/public/assets/rprofilepage2.png)
