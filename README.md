@@ -6,15 +6,15 @@ The backend server is entered through its own index.js file, where we have impor
 
 The frontend is organized by scenes: specifically, the three main ones are our login/register page, home page, and profile page. These pages are essentially assemblages of various components, such as our navbar, user widget, post streams widget, and so on. Different scenes and widgets will render different pieces of information courtesy of our state management system, and API calls that handle information display and navigation. 
 
-LOGIN / REGISTER PAGE:
+## LOGIN / REGISTER PAGE:
 
-i. 
-![alt text](/public/assets/login.png)
+i. Login form created with Formik
+![login form](/public/assets/login.png)
 
-ii. 
-/Users/erikvargas/Desktop/mern-network/register1.png
+ii. Register form with Formik, and multer
+![top of register form](/public/assets/register1.png)
 
-iii. 
-/Users/erikvargas/Desktop/mern-network/register2.png
+iii. Bottom part of register form 
+![bottom part of register form](/public/assets/register2.png)
 
 
